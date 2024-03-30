@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐÁNH GIÁ</title>
+    <style>
+        #dong-gop {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        #dong-gop h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        #dong-gop ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #dong-gop ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #dong-gop ul li .avatar {
+            float: left;
+            margin-right: 10px;
+        }
+
+        #dong-gop ul li .avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        #dong-gop ul li .noi-dung {
+            overflow: hidden;
+        }
+
+        #dong-gop ul li .noi-dung p {
+            margin-bottom: 5px;
+        }
+
+        #dong-gop ul li .noi-dung strong {
+            font-weight: bold;
+        }
+
+        #dong-gop form {
+            margin-top: 10px;
+        }
+
+        #dong-gop form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #dong-gop form button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="dong-gop">
+        <h3>ĐÁNH GIÁ</h3>
+        <ul></ul>
+        <form>
+            <input type="text" id="name" placeholder="Tên của bạn...">
+            <input type="text" id="comment" placeholder="Viết bình luận của bạn...">
+            <button type="submit">Gửi</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector("#dong-gop form");
+        const ul = document.querySelector("#dong-gop ul");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            // Lấy nội dung bình luận và tên người bình luận
+            const name = document.querySelector("#name").value;
+            const comment = document.querySelector("#comment").value;
+
+            // Tạo đối tượng Date để lấy thời gian hiện tại
+            const currentDate = new Date();
+            const timestamp = currentDate.toLocaleString();
+
+            // Tạo phần tử HTML cho bình luận mới
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <div class="noi-dung">
+                    <p><strong>${name}</strong>: ${comment}</p>
+                    <p><em>${timestamp}</em></p>
+                </div>
+            `;
+
+            // Thêm phần tử bình luận mới vào danh sách
+            ul.appendChild(li);
+// Xóa nội dung input
+document.querySelector("#name").value = "";
+            document.querySelector("#comment").value = "";
+        });
+    </script>
+</body>
+</html>

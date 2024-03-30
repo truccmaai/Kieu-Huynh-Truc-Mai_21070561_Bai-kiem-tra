@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng chạy giờ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .clock {
+     background-color: black;
+      width: 300px;
+      height: 50px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      padding: 40px;
+      text-align: center;
+    }
+    .clock .time {
+    color: white;
+     font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time" id="currentTime"></div>
+  </div>
+  <script>
+    // Chức năng hiển thị thời gian hiện tại
+    function displayTime() {
+      const date = new Date();
+      const hours = date.getHours().toString().padStart(2, '0'); // Pad hours with leading zero
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+      const meridiem = hours >= 12 ? 'PM' : 'AM'; 
+
+      // Cập nhật yếu tố thời gian
+      document.getElementById("currentTime").textContent = `${hours}:${minutes}:${seconds} ${meridiem}`;
+    }
+
+    // Gọi displayTime và cập nhật mỗi giây
+    displayTime();
+    setInterval(displayTime, 1000); // Cập nhật mỗi 1 giây
+  </script>
+</body>
+</html>
